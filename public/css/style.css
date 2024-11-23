@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+}
+body {
+  background: #f3f4f6;
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+ul {
+  list-style: none;
+}
+
+/* Standard fonts */
+.lg-h-font {
+  font-size: 3.2rem;
+}
+.h-font {
+  font-size: 1.9rem;
+  color: #fff;
+}
+.p-font {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+/* Main container */
+.main-container {
+  display: flex;
+  height: 100vh;
+  background: #ffffff;
+}
+
+/* Sidebar */
+.caller-list-wrapper {
+  flex-basis: 25rem;
+  background: #1e3a8a;
+  color: #fff;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.caller-list-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.caller-list > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #2956b0;
+  margin: 0.5rem 0;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.caller-list > li:hover {
+  background: #4d70a3;
+}
+.call-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.call-btn:hover {
+  transform: scale(1.1);
+}
+.call-btn img {
+  width: 24px;
+}
+
+/* Video container */
+.video-call-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(19, 21, 58);
+  padding: 2rem;
+}
+.video-streams {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.local-video,
+.remote-video {
+  width: 40rem;
+  height: 40rem;
+  background: #000;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.local-video video,
+.remote-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+/* Input and button styling */
+.username-input {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.username-input input {
+  width: 30rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #d1d5db;
+  font-size: 1.6rem;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.username-input input::placeholder {
+  color: #9ca3af;
+}
+.username-input button {
+  padding: 1rem 2rem;
+  background: #22345a;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.6rem;
+  transition: background 0.3s ease;
+}
+.username-input button:hover {
+  background: #1d4ed8;
+}
+
+/* Call button */
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  background: #dc2626;
+  border-radius: 50%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.call img {
+  width: 2.5rem;
+}
+.call:hover {
+  background: #b91c1c;
+  transform: scale(1.1);
+}
+
+/* Hidden elements */
+.d-none {
+  display: none;
+}
+/* Add a class for the "call connected" state */
+.call-connected .local-video {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 10rem;
+    height: 10rem;
+    z-index: 10;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .call-connected .remote-video {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    position: relative;
+    box-shadow: none;
+  }
+  
