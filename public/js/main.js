@@ -27,15 +27,15 @@ const PeerConnection = (function () {
     };
     peerConnection = new RTCPeerConnection(config);
 
-    //add local audio/video streams to peerConnection
+    // Add local audio/video streams to peerConnection
     localStream.getTracks().forEach((track) => {
       peerConnection.addTrack(track, localStream);
     });
-    //listem to remote streams and add to peerConnection
+    // Listen to remote streams and add to peerConnection
     peerConnection.ontrack = function (event) {
       remoteVideo.srcObject = event.streams[0];
     };
-    //listen for ICE candidate
+    // Listen for ICE candidates
     peerConnection.onicecandidate = function (event) {
       if (event.candidate) {
         socket.emit("icecandidate", event.candidate);
@@ -44,9 +44,14 @@ const PeerConnection = (function () {
 
     return peerConnection;
   };
+
   return {
-    //this function will return the instance of the peer connection
+    // This function will return the instance of the peer connection
     getInstance: () => {
+      // Create a new instance if the current one is closed
+      if (peerConnection && peerConnection.signalingState === "closed") {
+        peerConnection = null; // Reset the connection
+      }
       if (!peerConnection) {
         peerConnection = createPeerConnection();
       }
@@ -54,6 +59,7 @@ const PeerConnection = (function () {
     },
   };
 })();
+
 //handle browser event
 
 // 1.createUserBtn.addEventListener("click", (e) => { ... }):
